@@ -1,0 +1,30 @@
+{
+  "development": {
+    "username": "root",
+    "password": "nisharai26",
+    "database": "API_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false,
+"define": {
+   "timestamps": true,
+   "createdAt":"createdAt",
+   "updatedAt":"updatedAt"
+}
+
+  },
+  "test": {
+    "username": "root",
+    "password": "nisharai26",
+    "database": "API_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "nisharai26",
+    "database": "API_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
