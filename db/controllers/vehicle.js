@@ -1,57 +1,28 @@
-var models = require('../models');
+const models = require('../models')
+
+function save(req,res){
+	const vehicle = {
+		make:req.body.make,
+		model:req.body.model
+	}
+
+	models.Vehicle.create(vehicle).then(result =>{
+             res.status(201).json({
+				 message:"Data Inserted Successfully",
+				 post:result
+			
+				 
+			 })
+	}).catch(error =>{
+		res.status(500).json({
+			message:"error",
+			error:error
+		})
+
+	})
+}
+
 
 module.exports = {
-	fetchAll(req, res){
-		models.Vehicles.findAll({})
-		.then(function(result){
-			res.status(200).json(result);
-		})
-		.catch(function(error){
-			res.status(500).json(error);
-		});
-	},
-	create(req, res){
-		var newVehicles = models.Vehicles.build();
-		newVehicles.make = req.body.make;
-		newVehicles.model = req.body.model;
-		
-		console.log(newVehicles);
-		newVehicles.save()
-		.then(function(result){
-			res.status(200).json(result);
-		})
-		.catch(function(error){
-			res.status(500).json(error);
-		})
-	},
-
-	update(req, res){
-		models.Vehicles.findById(req.params.id)
-		.then(function(vehiclesToUpdate){
-			vehiclesToUpdate.firstName = req.sanitize('make').escape();
-			vehiclesToUpdate.lastName = req.sanitize('model').escape();
-			
-			vehiclesToUpdate.save()
-			.then(function(result){
-				res.status(200).json(result);
-			})
-			.catch(function(error){
-				res.status(500).json(error);
-			})
-		})
-	},
-
-	delete(req, res){
-		models.Vehicles.destroy({
-			where: {
-				id: req.params.id
-			}
-		})
-		.then(function(result){
-			res.status(200).json(result);
-		})
-		.catch(function(error){
-			res.status(500).json(error);
-		});
-	}
+save:save
 }

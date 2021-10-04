@@ -15,17 +15,14 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 
-var models = require("./db/models");
-
+const vehicleRouter = require("./routers/vehicle")
+app.use("/vehicles",vehicleRouter);
 app.get('/', function(req, res, next){
 	res.send('Home Route - nothing to see here yet ');
 });
 
-app.get('/api/v1/Vehicles', vehicleController.fetchAll);
 
-app.post('/api/v1/Vehicles/', vehicleController.create);
-app.put('/api/v1/Vehicles/:id', vehicleController.update);
-app.delete('/api/v1/Vehicles/:id', vehicleController.delete);
+
 
 
 
