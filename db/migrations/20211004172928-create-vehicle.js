@@ -11,14 +11,23 @@ module.exports = {
       make: {
         type: Sequelize.STRING
       },
+      model: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(6)")
+        
+       
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP(6)")
+        
       }
+      
     });
   },
   down: async (queryInterface, Sequelize) => {

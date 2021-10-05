@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Vehicle.init({
-    make: DataTypes.STRING
+    make: DataTypes.STRING,
+    model:DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Vehicle',
