@@ -3,6 +3,7 @@ const models = require('../models')
 
 function save(req,res){
 	const vehicle = {
+	
 		make:req.body.make,
 		model:req.body.model
 	}
@@ -100,10 +101,33 @@ function update(req,res){
 	})
 }
 
+function fullName(req,res){
+	const make = req.params.make;
+	const model = req.params.model;
+	models.Vehicle.findAll({
+		attributes: [models.sequelize.literal(make || ' ' || model), 'full_name']
+	  }).then(result=>{
+		if(result){
+			res.status(200).json(result);
+		} else {
+			res.status(404).json({
+				message:"Record Not Found"
+			})
+		}
+		
+	}).catch(error=>{
+		res.status(500).json({
+			message:"Something Went Wrong"
+		})
+	})
+}
+
+
 
 module.exports = {
 save:save,
 show:show,
 index:index,
-update:update
+update:update,
+fullName:fullName
 }

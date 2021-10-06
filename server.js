@@ -15,8 +15,10 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 
+
 const vehicleRouter = require("./routers/vehicle")
 app.use("/vehicles",vehicleRouter);
+app.use("/fullName",vehicleRouter);
 app.get('/', function(req, res, next){
 	res.send('Home Route - nothing to see here yet ');
 });
