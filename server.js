@@ -23,14 +23,6 @@ app.get('/', function(req, res, next){
 	res.send('Home Route - nothing to see here yet ');
 });
 
-
-
-
-
-
-
-
-
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
